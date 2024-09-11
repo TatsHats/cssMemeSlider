@@ -7,46 +7,152 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+ h1 {
+    font-size: 50px;
+    margin-bottom: 1rem;
 }
 
 .slider {
-    position: relative;
-    text-align: center;
-    top: 20px;
     margin: 20px auto;
-    width: 100%;
+    width: 80%;
+    max-width: 800px;
     overflow: hidden;
-}
-
-.slider h1 {
-    font-size: 50px;
 }
 
 .slides {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 500%;
 }
+
 .slide {
-    width: 100%;
-    flex: 0 0 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-width: 100%;
+    text-align: center;
 }
+
 .slide img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
 }
-.first {
+
+.description-and-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
 }
-.description {
+
+.description p {
+    font-size: 1.5rem;
+    padding: 1rem;
+    color: black;
+    display: none;
 }
-.descr {
-}
+
+#desc1 { display: block; }
+
 .controller {
+    display: flex;
+    justify-content: center;
 }
+
 .control {
+    width: 20px;
+    height: 20px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.5s;
 }
-.point {
+
+.control:hover {
+    background-color: #333;
+}
+
+/* Переключение слайдов и описаний */
+input#button1:checked ~ .slides {
+    transform: translateX(0%);
+}
+
+input#button2:checked ~ .slides {
+    transform: translateX(-100%);
+}
+
+input#button3:checked ~ .slides {
+    transform: translateX(-200%);
+}
+
+input#button4:checked ~ .slides {
+    transform: translateX(-300%);
+}
+
+input#button5:checked ~ .slides {
+    transform: translateX(-400%);
+}
+
+/* скрыть описание при переключении слайдов */
+input#button1:checked ~ .description-and-controls .description p {
+    display: none;
+}
+
+input#button2:checked ~ .description-and-controls .description p {
+    display: none;
+}
+
+input#button3:checked ~ .description-and-controls .description p {
+    display: none;
+}
+
+input#button4:checked ~ .description-and-controls .description p {
+    display: none;
+}
+
+input#button5:checked ~ .description-and-controls .description p {
+    display: none;
+}
+
+/* показать только активное описание */
+input#button1:checked ~ .description-and-controls #desc1 {
+    display: block;
+}
+
+input#button2:checked ~ .description-and-controls #desc2 {
+    display: block;
+}
+
+input#button3:checked ~ .description-and-controls #desc3 {
+    display: block;
+}
+
+input#button4:checked ~ .description-and-controls #desc4 {
+    display: block;
+}
+
+input#button5:checked ~ .description-and-controls #desc5 {
+    display: block;
+}
+
+input[type="radio"] {
+    display: none;
+} 
+
+/* Изменение слайдера на маленьких экранах */
+@media (max-width: 500px) {
+    .slider {
+        width: 95%;
+    }
+    .description-and-controls {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+    .controller {
+        justify-content: center;
+    }
 }
