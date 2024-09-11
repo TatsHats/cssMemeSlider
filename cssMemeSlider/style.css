@@ -1,8 +1,42 @@
-.slider {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.sliders {
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.slider {
+    position: relative;
+    text-align: center;
+    top: 20px;
+    margin: 20px auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider h1 {
+    font-size: 50px;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 500%;
 }
 .slide {
+    width: 100%;
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slide img {
+    max-width: 100%;
+    height: auto;
 }
 .first {
 }
