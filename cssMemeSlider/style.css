@@ -34,6 +34,9 @@ body {
 .slide {
     min-width: 100%;
     text-align: center;
+    border: 8px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
 }
 
 .slide img {
@@ -50,10 +53,21 @@ body {
 
 .description p {
     font-size: 1.5rem;
-    padding: 1rem;
+    padding: 1rem 0;
     color: black;
     display: none;
     text-align: left;
+    transition: opacity 0.5s ease-in-out;
+}
+
+input#button1:checked ~ .description-and-controls #desc1,
+input#button2:checked ~ .description-and-controls #desc2,
+input#button3:checked ~ .description-and-controls #desc3,
+input#button4:checked ~ .description-and-controls #desc4,
+input#button5:checked ~ .description-and-controls #desc5 {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
 
 #desc1 { display: block; }
