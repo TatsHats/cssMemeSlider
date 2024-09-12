@@ -53,6 +53,7 @@ body {
     padding: 1rem;
     color: black;
     display: none;
+    text-align: left;
 }
 
 #desc1 { display: block; }
@@ -69,11 +70,28 @@ body {
     border-radius: 50%;
     margin: 0 10px;
     cursor: pointer;
-    transition: background-color 0.5s;
+    transition: background-color 0.5s, border 0.5s;
 }
 
 .control:hover {
     background-color: #333;
+}
+
+input#button1:checked ~ .description-and-controls .controller label[for="button1"],
+input#button2:checked ~ .description-and-controls .controller label[for="button2"],
+input#button3:checked ~ .description-and-controls .controller label[for="button3"],
+input#button4:checked ~ .description-and-controls .controller label[for="button4"],
+input#button5:checked ~ .description-and-controls .controller label[for="button5"] {
+    background-color: transparent;
+    border: 3px solid #bbb;
+}
+
+input#button1:checked ~ .description-and-controls .controller label[for="button1"]:hover,
+input#button2:checked ~ .description-and-controls .controller label[for="button2"]:hover,
+input#button3:checked ~ .description-and-controls .controller label[for="button3"]:hover,
+input#button4:checked ~ .description-and-controls .controller label[for="button4"]:hover,
+input#button5:checked ~ .description-and-controls .controller label[for="button5"]:hover {
+    border: 3px solid #333;
 }
 
 /* Переключение слайдов и описаний */
@@ -150,9 +168,16 @@ input[type="radio"] {
     }
     .description-and-controls {
         flex-direction: column-reverse;
-        align-items: flex-start;
+        align-items: center;
     }
     .controller {
         justify-content: center;
+        margin-top: 10px;
+    }
+    .description {
+        width: 100%;
+    }
+    .description p {
+        text-align: left;
     }
 }
