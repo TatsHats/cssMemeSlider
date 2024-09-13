@@ -14,11 +14,6 @@ body {
     min-height: 100vh;
 }
 
- h1 {
-    font-size: 50px;
-    margin-bottom: 1rem;
-}
-
 .slider {
     margin: 20px auto;
     width: 80%;
@@ -51,13 +46,39 @@ body {
     margin-top: 1rem;
 }
 
-.description p {
-    font-size: 1.5rem;
+.description {
+width: 100%;
+overflow: hidden;
+height: 3rem;
+}
+
+.description-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.description span {
+    font-size: 1.3rem;
+    min-width: 100%;
     padding: 1rem 0;
     color: black;
-    display: none;
     text-align: left;
-    transition: opacity 0.5s ease-in-out;
+}
+
+input#button1:checked ~ .description-and-controls .description-wrapper {
+    transform: translateX(0%);
+}
+input#button2:checked ~ .description-and-controls .description-wrapper {
+    transform: translateX(-100%);
+}
+input#button3:checked ~ .description-and-controls .description-wrapper {
+    transform: translateX(-200%);
+}
+input#button4:checked ~ .description-and-controls .description-wrapper {
+    transform: translateX(-300%);
+}
+input#button5:checked ~ .description-and-controls .description-wrapper {
+    transform: translateX(-400%);
 }
 
 input#button1:checked ~ .description-and-controls #desc1,
@@ -67,14 +88,13 @@ input#button4:checked ~ .description-and-controls #desc4,
 input#button5:checked ~ .description-and-controls #desc5 {
     display: block;
     opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+    transform: translateY(0);
 }
-
-#desc1 { display: block; }
 
 .controller {
     display: flex;
     justify-content: center;
+    padding: 10px;
 }
 
 .control {
@@ -82,10 +102,23 @@ input#button5:checked ~ .description-and-controls #desc5 {
     height: 20px;
     background-color: #bbb;
     border-radius: 50%;
-    margin: 0 10px;
     cursor: pointer;
     transition: background-color 0.5s, border 0.5s;
+    margin: 0 10px;
+    position: relative;
 }
+
+.control::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: transparent;
+    z-index: 0;
+}
+
 
 .control:hover {
     background-color: #333;
