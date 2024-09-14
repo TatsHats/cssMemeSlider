@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.slider {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 700px;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    text-align: center;
+    border: 8px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+}
+
+.description-and-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.description {
+width: 100%;
+overflow: hidden;
+height: 3rem;
+}
+
+.description-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.description span {
+    font-size: 1.3rem;
+    min-width: 100%;
+    padding: 1rem 0;
+    color: black;
+    text-align: left;
+}
+
+input#button1:checked ~ .description-and-controls .description-wrapper {
+    transform: translateX(0%);
+}
+input#button2:checked ~ .description-and-controls .description-wrapper {
+    transform: translateX(-100%);
+}
+input#button3:checked ~ .description-and-controls .description-wrapper {
+    transform: translateX(-200%);
+}
+input#button4:checked ~ .description-and-controls .description-wrapper {
+    transform: translateX(-300%);
+}
+input#button5:checked ~ .description-and-controls .description-wrapper {
+    transform: translateX(-400%);
+}
+
+input#button1:checked ~ .description-and-controls #desc1,
+input#button2:checked ~ .description-and-controls #desc2,
+input#button3:checked ~ .description-and-controls #desc3,
+input#button4:checked ~ .description-and-controls #desc4,
+input#button5:checked ~ .description-and-controls #desc5 {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.controller {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.control {
+    width: 20px;
+    height: 20px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.5s, border 0.5s;
+    margin: 0 10px;
+    position: relative;
+}
+
+.control::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: transparent;
+    z-index: 0;
+}
+
+
+.control:hover {
+    background-color: #333;
+}
+
+input#button1:checked ~ .description-and-controls .controller label[for="button1"],
+input#button2:checked ~ .description-and-controls .controller label[for="button2"],
+input#button3:checked ~ .description-and-controls .controller label[for="button3"],
+input#button4:checked ~ .description-and-controls .controller label[for="button4"],
+input#button5:checked ~ .description-and-controls .controller label[for="button5"] {
+    background-color: transparent;
+    border: 3px solid #bbb;
+}
+
+input#button1:checked ~ .description-and-controls .controller label[for="button1"]:hover,
+input#button2:checked ~ .description-and-controls .controller label[for="button2"]:hover,
+input#button3:checked ~ .description-and-controls .controller label[for="button3"]:hover,
+input#button4:checked ~ .description-and-controls .controller label[for="button4"]:hover,
+input#button5:checked ~ .description-and-controls .controller label[for="button5"]:hover {
+    border: 3px solid #333;
+}
+
+/* Переключение слайдов и описаний */
+input#button1:checked ~ .slides {
+    transform: translateX(0%);
+}
+
+input#button2:checked ~ .slides {
+    transform: translateX(-100%);
+}
+
+input#button3:checked ~ .slides {
+    transform: translateX(-200%);
+}
+
+input#button4:checked ~ .slides {
+    transform: translateX(-300%);
+}
+
+input#button5:checked ~ .slides {
+    transform: translateX(-400%);
+}
+
+/* скрыть описание при переключении слайдов */
+input#button1:checked ~ .description-and-controls .description p {
+    display: none;
+}
+
+input#button2:checked ~ .description-and-controls .description p {
+    display: none;
+}
+
+input#button3:checked ~ .description-and-controls .description p {
+    display: none;
+}
+
+input#button4:checked ~ .description-and-controls .description p {
+    display: none;
+}
+
+input#button5:checked ~ .description-and-controls .description p {
+    display: none;
+}
+
+/* показать только активное описание */
+input#button1:checked ~ .description-and-controls #desc1 {
+    display: block;
+}
+
+input#button2:checked ~ .description-and-controls #desc2 {
+    display: block;
+}
+
+input#button3:checked ~ .description-and-controls #desc3 {
+    display: block;
+}
+
+input#button4:checked ~ .description-and-controls #desc4 {
+    display: block;
+}
+
+input#button5:checked ~ .description-and-controls #desc5 {
+    display: block;
+}
+
+input[type="radio"] {
+    display: none;
+} 
+
+/* Изменение слайдера на маленьких экранах */
+@media (max-width: 500px) {
+    .slider {
+        width: 95%;
+    }
+    .description-and-controls {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .controller {
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .description {
+        width: 100%;
+    }
+    .description p {
+        text-align: left;
+    }
+}
